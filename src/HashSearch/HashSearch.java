@@ -7,15 +7,16 @@ import HashSearch.Hash.hashMethodDividing;
 import HashSearch.Hash.hashMethodMidSquares;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 
 public class HashSearch {
 
-    private final int countForEfficiency = 500;
-    private final int maxNumber = 65000;
+
+    private Hash bestHashFunc = new hashMethodMidSquares();
+    private int maxNumber = 65000;
     private long listKey[];
+    private long time;
 
 
 
@@ -25,29 +26,49 @@ public class HashSearch {
 
 
 
-    public void newListKey(int count){
+    public HashSearch(int count){
+        time = 0;
         listKey = new long[count];
+        hashListOpenAddress = new long[count];
+        hashListChain = new ArrayList[count];
+        cleanHashLists();
+        newListKey(count);
+    }
+
+
+    public long getTime() {
+        return time;
+    }
+
+    public int getMaxNumber() {
+        return maxNumber;
+    }
+
+    public void setMaxNumber(int maxNumber) {
+        this.maxNumber = maxNumber;
+    }
+
+    // формирует новый массив ключей
+
+    public void newListKey(int count){
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             listKey[i] = random.nextInt(maxNumber);
         }
     }
 
+    // Очищает хэш массивы
+
     private void cleanHashLists(){
         for (long i: hashListOpenAddress) {
-            i = Long.MAX_VALUE;
+            i = Long.MIN_VALUE;
         }
 
         for (ArrayList<Long> i: hashListChain) {
             i = new ArrayList<>();
         }
     }
-    HashSearch(int count){
-        hashListOpenAddress = new long[count];
-        hashListChain = new ArrayList[count];
-        cleanHashLists();
-        newListKey(count);
-    }
+
 
 
 
@@ -64,16 +85,21 @@ public class HashSearch {
         listKey[index] = value;
     }
 
+
+    // Добавляет одно хэш значение в массив методом цепочек
+
     private void addMethodChain(long value, int index) {
         hashListChain[index].add(value);
     }
 
 
+    // Возвращает количество коллизий
+
     public int getCountCollision(){
         int count = 0;
-        for (int i = 0; i < hashListChain.length; i++) {
-            if (hashListChain[i].size() > 1){
-                count += hashListChain[i].size() - 1;
+        for (ArrayList i : hashListChain) {
+            if (i.size() > 1){
+                count += i.size() - 1;
             }
         }
         return count;
@@ -82,8 +108,8 @@ public class HashSearch {
     // Заполняет хэш значениями массив методом цепочек
 
     private void infillChain(Hash hash){
-        for (int i = 0; i < listKey.length; i++) {
-            addMethodChain(listKey[i], hash.getHash(listKey[i], listKey.length));
+        for (long i : listKey) {
+            addMethodChain(i, hash.getHash(i, listKey.length));
         }
     }
 
@@ -93,19 +119,18 @@ public class HashSearch {
 
     private void infillOpenAddress(Hash hash){
 
-        for (int i = 0; i < listKey.length; i++) {
-            addMethodOpenAddress(listKey[i], hash.getHash(listKey[i], listKey.length));
+        for (long i : listKey) {
+            addMethodOpenAddress(i, hash.getHash(i, listKey.length));
 
         }
     }
 
-    private int getEffic
 
 
     // Возвращает массив с счетчиками эффективности хэш функций
 
-    public int[] efficiency(){
-        int effic[] = new int[4];
+    public int[] analisysEfficiency(int countForEfficiency){
+        int efficiency[] = new int[4];
         for (int i = 0; i < countForEfficiency; i++) {
 
             int countCollisions[] = new  int[4];
@@ -128,12 +153,54 @@ public class HashSearch {
             infillChain(new hashMethodDividing());
             countCollisions[3] = getCountCollision();
 
-            int minValue = Integer.MIN_VALUE;
-            for (int j: countCollisions) {
-                if (j < minValue){
-
+            int indexMinValue = 0;
+            for (int j = 1; j < countCollisions.length; j++) {
+                if (countCollisions[j] < countCollisions[indexMinValue]){
+                    indexMinValue = j;
                 }
             }
+
+            efficiency[indexMinValue]++;
         }
+        return efficiency;
+    }
+
+    public boolean searchOpenAddress(long key){
+        time = System.nanoTime();
+        int index = bestHashFunc.getHash(key, listKey.length);
+        if (hashListOpenAddress[index] == Integer.MIN_VALUE){
+            time -= System.nanoTime();
+            return false;
+        }
+        int barrier = index;
+        while (index != hashListOpenAddress.length) {
+            index++;
+            if (hashListOpenAddress[index] == key) {
+                time -= System.nanoTime();
+                return true;
+            }
+        }
+        index = 0;
+        while (index != barrier) {
+            index++;
+            if (hashListOpenAddress[index] == key) {
+                time -= System.nanoTime();
+                return true;
+            }
+        }
+        time -= System.nanoTime();
+        return false;
+    }
+
+    public boolean searchChain(long key){
+        time = System.nanoTime();
+        int index = bestHashFunc.getHash(key, listKey.length);
+        if(hashListChain[index].contains(key)){
+            time -= System.nanoTime();
+            return true;
+        }
+        time -= System.nanoTime();
+        return false;
+
     }
 }
