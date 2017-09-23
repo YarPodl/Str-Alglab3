@@ -2,32 +2,12 @@ package HashSearch;
 
 
 
-public abstract class Hash {
+public class Hash {
 
-    protected static final double multiplier = 0.6180339887;
-    protected static final int divisor = 11817;
+    private static final double multiplier = 0.6180339887;
+    private static final int divisor = 11817;
 
-    abstract int getHash(long value, int countAddress);
 
-}
-public class HashMethodDividing extends Hash{
-    int getHash(long value, int countAddress) {
-        return (int) ((value % divisor) * ((double)countAddress / divisor));
-    }
-}
-    public class hashMethodMidSquares extends Hash{
-        int getHash(long value, int countAddress) {
-            return
-        }
-    }
-public class hashMethodCurtailing extends Hash{
-    int getHash(long value, int countAddress) {
-        return
-    }}
-public class hashMethodMethodMultipl extends Hash{
-    int getHash(long value, int countAddress) {
-        return
-    }}
     static int methodDividing(long value, int countAddress){
         return (int) ((value % divisor) * ((double)countAddress / divisor));
     }

@@ -15,7 +15,6 @@ public class HashSearch {
     ArrayList<Long>[] hashListChain;
 
 
-    public void
 
 
     public void newListKey(int count){
@@ -58,6 +57,16 @@ public class HashSearch {
         list[index] = value;
     }
 
+
+    public int getCountCollision(){
+        int count = 0;
+        for (int i = 0; i < hashListChain.length; i++) {
+            if (hashListChain[i].size() > 1){
+                count += hashListChain[i].size() - 1;
+            }
+        }
+        return count;
+    }
 
     // Заполняет хэш значениями массив методом цепочек
 
