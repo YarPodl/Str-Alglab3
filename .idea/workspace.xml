@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a378b105-c9de-4b30-8e65-b93d019c8680" name="Default" comment="HashSearch">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="a378b105-c9de-4b30-8e65-b93d019c8680" name="Default" comment="classes">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HashSearch/Hash/HashMethodDividing.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodCurtailing.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMethodMultipl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMidSquares.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HashSearch/Hash.java" afterPath="$PROJECT_DIR$/src/HashSearch/Hash.java" />
     </list>
-    <list id="cf0f180f-8ba9-448e-a36d-0ad5b94bd340" name="Наседование хешей" comment="Наседование хешей" />
+    <list id="73f2516a-6ed2-4be9-a672-075115b7f8fe" name="other" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/HashSearch/HashSearch.java" afterPath="$PROJECT_DIR$/src/HashSearch/HashSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Form.form" afterPath="$PROJECT_DIR$/src/Main/Form.form" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/src/HashSearch/HashSearch.java" ignored="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +40,8 @@
       <file leaf-file-name="Form.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/Form.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -46,26 +54,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hash.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash.java">
+      <file leaf-file-name="HashSearch.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/HashSearch/HashSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="289">
+              <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HashSearch.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HashSearch/HashSearch.java">
+      <file leaf-file-name="Hash.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="509">
-              <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1698#1699#0" expanded="true" />
-                <element signature="e#1728#1729#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,8 +98,14 @@
       <list>
         <option value="$PROJECT_DIR$/src/Main/Main.java" />
         <option value="$PROJECT_DIR$/src/Main/HashSearch.java" />
-        <option value="$PROJECT_DIR$/src/HashSearch/HashSearch.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodCurtailing.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/Hash/HashMethodDividing.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMethodMultipl.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMidSquares.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/Hash/Hash.java" />
+        <option value="$PROJECT_DIR$/src/Main/Form.form" />
         <option value="$PROJECT_DIR$/src/HashSearch/Hash.java" />
+        <option value="$PROJECT_DIR$/src/HashSearch/HashSearch.java" />
       </list>
     </option>
   </component>
@@ -142,6 +154,13 @@
               <item name="lab3" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab3" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="462c0819:PsiDirectoryNode" />
+              <item name="Form" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
@@ -256,7 +275,8 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a378b105-c9de-4b30-8e65-b93d019c8680" name="Default" comment="" />
-      <changelist id="cf0f180f-8ba9-448e-a36d-0ad5b94bd340" name="Наседование хешей" comment="Наседование хешей" />
+      <changelist id="" name="Наседование хешей" comment="Наседование хешей" />
+      <changelist id="73f2516a-6ed2-4be9-a672-075115b7f8fe" name="other" comment="" />
       <created>1505746030897</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -276,7 +296,21 @@
       <option name="project" value="LOCAL" />
       <updated>1506177150724</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="HashSearch">
+      <created>1506177643494</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1506177643494</updated>
+    </task>
+    <task id="LOCAL-00004" summary="classes">
+      <created>1506182577501</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1506182577501</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -354,7 +388,8 @@
     <MESSAGE value="Начало" />
     <MESSAGE value="Наследование хешей" />
     <MESSAGE value="HashSearch" />
-    <option name="LAST_COMMIT_MESSAGE" value="HashSearch" />
+    <MESSAGE value="classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -382,7 +417,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash.java">
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/Hash.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
@@ -396,8 +431,6 @@
           <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1698#1699#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -423,7 +456,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash.java">
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/Hash.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
@@ -439,37 +472,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Form.java">
+    <entry file="file://$PROJECT_DIR$/src/Main/HashSearch.java" />
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/HashMethodDividing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/HashSearch.java" />
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMethodMultipl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/hashMethodMidSquares.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/Hash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-65">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Form.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main/Form.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HashSearch/HashSearch.java">
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash/hashMethodCurtailing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="72" column="35" lean-forward="false" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1698#1699#0" expanded="true" />
-            <element signature="e#1728#1729#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HashSearch/Hash.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HashSearch/HashSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

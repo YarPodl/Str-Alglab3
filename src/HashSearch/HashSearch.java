@@ -1,7 +1,9 @@
 package HashSearch;
 
+
 import java.util.ArrayList;
 import java.util.Random;
+
 
 public class HashSearch {
 
@@ -25,7 +27,19 @@ public class HashSearch {
         }
     }
 
+    private void cleanHashLists(){
+        for (long i: hashListOpenAddress) {
+            i = Long.MAX_VALUE;
+        }
+
+        for (ArrayList<Long> i: hashListChain) {
+            i = new ArrayList<Long>();
+        }
+    }
     HashSearch(int count){
+        hashListOpenAddress = new long[count];
+        hashListChain = new ArrayList[count];
+        cleanHashLists();
         newListKey(count);
         /*
         hashListMethodDividing = new long[count];
@@ -46,15 +60,15 @@ public class HashSearch {
 
     // Добавляет одно хэш значение в массив методом открытой адресации
 
-    private void addMethodOpenAddress(long[] list, int index, long value) {
-        if (list[index] != 0){
+    private void addMethodOpenAddress(long value, int index) {
+        if (listKey[index] != Long.MIN_VALUE){
             int j = index + 1;
-            while (list[index] != 0){
+            while (listKey[index] != Long.MIN_VALUE){
                 j++;
-                if (j == list.length) {j = 0;}
+                if (j == listKey.length) {j = 0;}
             }
         }
-        list[index] = value;
+        listKey[index] = value;
     }
 
 
@@ -70,20 +84,22 @@ public class HashSearch {
 
     // Заполняет хэш значениями массив методом цепочек
 
-    private void infillMethodChain(){
-        hashListChain[]
+    private void addChain(int count){
+        for (int i = 0; i < listKey.length; i++) {
+            hashListChain[Hash.methodDividing(listKey[i], count)].add(listKey[i]);
+        }
     }
 
 
 
     // Заполняет хэш значениями массивы методом открытой адресации
 
-    private void infill(){
+    private void infillOpenAddress(){
         int hashMethodDividing;
         int hashMethodMidSquares;
         int hashMethodCurtailing;
         int hashMethodMethodMultipl;
-        for (int i = 0; i < list.length; i++) {
+        for (int i = 0; i < listKey.length; i++) {
             /*
             hashMethodDividing = Hash.methodDividing(list[i], list.length, divisor);
             hashMethodMidSquares = Hash.methodMidSquares(list[i], list.length);
