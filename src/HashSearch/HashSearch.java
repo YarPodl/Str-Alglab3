@@ -2,21 +2,25 @@ package HashSearch;
 
 
 import HashSearch.Hash.Hash;
+import HashSearch.Hash.hashMethodCurtailing;
+import HashSearch.Hash.hashMethodDividing;
+import HashSearch.Hash.hashMethodMidSquares;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 
 public class HashSearch {
 
-
+    private final int countForEfficiency = 500;
     private final int maxNumber = 65000;
     private long listKey[];
 
 
 
-    long hashListOpenAddress[];
-    ArrayList<Long>[] hashListChain;
+    private long hashListOpenAddress[];
+    private ArrayList<Long>[] hashListChain;
 
 
 
@@ -35,7 +39,7 @@ public class HashSearch {
         }
 
         for (ArrayList<Long> i: hashListChain) {
-            i = new ArrayList<Long>();
+            i = new ArrayList<>();
         }
     }
     HashSearch(int count){
@@ -43,19 +47,6 @@ public class HashSearch {
         hashListChain = new ArrayList[count];
         cleanHashLists();
         newListKey(count);
-        /*
-        hashListMethodDividing = new long[count];
-        hashListMethodMidSquares = new long[count];
-        hashListMethodCurtailing = new long[count];
-        hashListMethodMultipl = new long[count];
-
-        hashArrayListMethodDividing = new ArrayList<Long>[];
-        hashArrayListMethodMidSquares[];
-        hashArrayListMethodCurtailing[];
-        hashArrayListMethodMultipl[];
-
-        infill();
-        */
     }
 
 
@@ -92,7 +83,7 @@ public class HashSearch {
 
     private void infillChain(Hash hash){
         for (int i = 0; i < listKey.length; i++) {
-            hash.getHash(listKey[i], listKey.length)
+            addMethodChain(listKey[i], hash.getHash(listKey[i], listKey.length));
         }
     }
 
@@ -101,54 +92,48 @@ public class HashSearch {
     // Заполняет хэш значениями массивы методом открытой адресации
 
     private void infillOpenAddress(Hash hash){
-        /*
-        int hashMethodDividing;
-        int hashMethodMidSquares;
-        int hashMethodCurtailing;
-        int hashMethodMethodMultipl;
-        */
+
         for (int i = 0; i < listKey.length; i++) {
             addMethodOpenAddress(listKey[i], hash.getHash(listKey[i], listKey.length));
-            /*
-            hashMethodDividing = Hash.methodDividing(list[i], list.length, divisor);
-            hashMethodMidSquares = Hash.methodMidSquares(list[i], list.length);
-            hashMethodCurtailing = Hash.methodCurtailing(list[i], list.length);
-            hashMethodMethodMultipl = Hash.methodMultipl(list[i], list.length, multiplier);
 
-            addOpenAddress(hashListMethodDividing, hashMethodDividing, list[i]);
-            addOpenAddress(hashListMethodMidSquares, hashMethodMidSquares, list[i]);
-            addOpenAddress(hashListMethodCurtailing, hashMethodCurtailing, list[i]);
-            addOpenAddress(hashListMethodMultipl, hashMethodMethodMultipl, list[i]);
-            */
         }
     }
 
+    private int getEffic
 
-    /*
-    long hashListMethodDividing[];
-    long hashListMethodMidSquares[];
-    long hashListMethodCurtailing[];
-    long hashListMethodMultipl[];
 
-    ArrayList<Long> hashArrayListMethodDividing[]; // Тут изменить!!
-    ArrayList<Long> hashArrayListMethodMidSquares[];
-    ArrayList<Long> hashArrayListMethodCurtailing[];
-    ArrayList<Long> hashArrayListMethodMultipl[];
-    */
+    // Возвращает массив с счетчиками эффективности хэш функций
 
-    /*
-    private void hashOpenAddressMethodDividing(){
+    public int[] efficiency(){
+        int effic[] = new int[4];
+        for (int i = 0; i < countForEfficiency; i++) {
 
+            int countCollisions[] = new  int[4];
+
+            cleanHashLists();
+            infillChain(new hashMethodDividing());
+            countCollisions[0] = getCountCollision();
+
+            cleanHashLists();
+            infillChain(new hashMethodCurtailing());
+            countCollisions[1] = getCountCollision();
+
+
+            cleanHashLists();
+            infillChain(new hashMethodMidSquares());
+            countCollisions[2] = getCountCollision();
+
+
+            cleanHashLists();
+            infillChain(new hashMethodDividing());
+            countCollisions[3] = getCountCollision();
+
+            int minValue = Integer.MIN_VALUE;
+            for (int j: countCollisions) {
+                if (j < minValue){
+
+                }
+            }
+        }
     }
-    private void hashOpenAddressMethodMidSquares(){
-
-    }
-    private void hashOpenAddressMethodCurtailing(){
-
-    }
-    private void hashOpenAddressMethodMultipl(){
-
-    }
-
-    */
 }
