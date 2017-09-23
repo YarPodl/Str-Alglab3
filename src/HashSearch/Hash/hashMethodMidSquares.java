@@ -1,7 +1,7 @@
 package HashSearch.Hash;
 
-public class hashMethodMidSquares extends Hash{
-    int getHash(long value, int countAddress) {
+public class hashMethodMidSquares implements Hash{
+    public int getHash(long value, int countAddress) {
         int lengthAddress = Integer.toString(countAddress).length(); // порядок числа адресов
         long valueSqr = value*value;
         int lengthValueSqr = Long.toString(valueSqr).length();

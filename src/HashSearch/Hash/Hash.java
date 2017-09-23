@@ -1,35 +1,16 @@
-package HashSearch;
+package HashSearch.Hash;
 
 
 
-public abstract class Hash {
+public interface Hash {
 
-    protected static final double multiplier = 0.6180339887;
-    protected static final int divisor = 11817;
+    double multiplier = 0.6180339887;
+    int divisor = 11817;
 
-    abstract int getHash(long value, int countAddress);
+    int getHash(long value, int countAddress);
 
 }
-
-
-public class HashMethodDividing extends Hash{
-    int getHash(long value, int countAddress) {
-        return (int) ((value % divisor) * ((double)countAddress / divisor));
-    }
-}
-public class hashMethodMidSquares extends Hash{
-    int getHash(long value, int countAddress) {
-        return
-    }
-}
-public class hashMethodCurtailing extends Hash{
-    int getHash(long value, int countAddress) {
-        return
-    }}
-public class hashMethodMethodMultipl extends Hash{
-    int getHash(long value, int countAddress) {
-        return
-    }}
+/*
     static int methodDividing(long value, int countAddress){
         return (int) ((value % divisor) * ((double)countAddress / divisor));
     }
@@ -72,3 +53,4 @@ public class hashMethodMethodMultipl extends Hash{
         return (int) (countAddress * i);
     }
 }
+*/

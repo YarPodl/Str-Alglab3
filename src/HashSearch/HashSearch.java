@@ -1,6 +1,8 @@
 package HashSearch;
 
 
+import HashSearch.Hash.Hash;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -71,6 +73,10 @@ public class HashSearch {
         listKey[index] = value;
     }
 
+    private void addMethodChain(long value, int index) {
+        hashListChain[index].add(value);
+    }
+
 
     public int getCountCollision(){
         int count = 0;
@@ -84,9 +90,9 @@ public class HashSearch {
 
     // Заполняет хэш значениями массив методом цепочек
 
-    private void addChain(int count){
+    private void infillChain(Hash hash){
         for (int i = 0; i < listKey.length; i++) {
-            hashListChain[Hash.methodDividing(listKey[i], count)].add(listKey[i]);
+            hash.getHash(listKey[i], listKey.length)
         }
     }
 
@@ -94,12 +100,15 @@ public class HashSearch {
 
     // Заполняет хэш значениями массивы методом открытой адресации
 
-    private void infillOpenAddress(){
+    private void infillOpenAddress(Hash hash){
+        /*
         int hashMethodDividing;
         int hashMethodMidSquares;
         int hashMethodCurtailing;
         int hashMethodMethodMultipl;
+        */
         for (int i = 0; i < listKey.length; i++) {
+            addMethodOpenAddress(listKey[i], hash.getHash(listKey[i], listKey.length));
             /*
             hashMethodDividing = Hash.methodDividing(list[i], list.length, divisor);
             hashMethodMidSquares = Hash.methodMidSquares(list[i], list.length);
