@@ -60,12 +60,11 @@ public class HashSearch {
     // Очищает хэш массивы
 
     private void cleanHashLists(){
-        for (long i: hashListOpenAddress) {
-            i = Long.MIN_VALUE;
+        for (int i = 0; i < hashListOpenAddress.length; i++) {
+            hashListOpenAddress[i] = Long.MIN_VALUE;
         }
-
-        for (ArrayList<Long> i: hashListChain) {
-            i = new ArrayList<>();
+        for (int i = 0; i < hashListChain.length; i++) {
+            hashListChain[i] = new ArrayList<>();
         }
     }
 
@@ -89,6 +88,8 @@ public class HashSearch {
     // Добавляет одно хэш значение в массив методом цепочек
 
     private void addMethodChain(long value, int index) {
+        System.out.println(index);
+        System.out.println(value);
         hashListChain[index].add(value);
     }
 
