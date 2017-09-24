@@ -5,7 +5,7 @@ package HashSearch.Hash;
 public interface Hash {
 
     double multiplier = 0.6180339887;
-    int divisor = 11817;
+    int divisor = 111;
 
     int getHash(long value, int countAddress);
 
