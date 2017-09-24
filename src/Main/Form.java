@@ -27,9 +27,9 @@ public class Form extends JFrame {
         setMinimumSize(new Dimension(600, 430));
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        spinnerCmr.setModel(new SpinnerNumberModel(100, 1, 1000, 1));
+        spinnerCmr.setModel(new SpinnerNumberModel(100, 1, 10000, 1));
         spinnerSearch.setModel(new SpinnerNumberModel(1000, 0, Integer.MAX_VALUE, 1));
-        spinnerCount.setModel(new SpinnerNumberModel(1000, 0, 100000, 1));
+        spinnerCount.setModel(new SpinnerNumberModel(1000, 0, 1000000, 1));
         spinnerMax.setModel(new SpinnerNumberModel(65000, 0, Integer.MAX_VALUE, 1));
     }
 

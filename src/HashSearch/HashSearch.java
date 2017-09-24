@@ -68,7 +68,7 @@ public class HashSearch {
 
     // Очищает хэш массивы
 
-    private void cleanHashLists(){
+    public void cleanHashLists(){
         for (int i = 0; i < hashListOpenAddress.length; i++) {
             hashListOpenAddress[i] = Long.MIN_VALUE;
         }
@@ -171,6 +171,27 @@ public class HashSearch {
 
             efficiency[indexMinValue]++;
         }
+        int indexMax = 0;
+        for (int j = 1; j < efficiency.length; j++) {
+            if (efficiency[j] > efficiency[indexMax]){
+                indexMax = j;
+            }
+        }
+        switch (indexMax){
+            case 0:
+                bestHashFunc = new hashMethodDividing();
+                break;
+            case 1:
+                bestHashFunc = new hashMethodCurtailing();
+                break;
+            case 2:
+                bestHashFunc = new hashMethodMidSquares();
+                break;
+            case 3:
+                bestHashFunc = new hashMethodMultipl();
+                break;
+        }
+        hashing();
         return efficiency;
     }
 

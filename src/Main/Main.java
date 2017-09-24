@@ -1,15 +1,16 @@
 package Main;
 
-import HashSearch.Hash.*;
 import HashSearch.HashSearch;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
 
 
-    private static final int count = 100000;
+    private static int count = 1000;
 
     private static HashSearch hashSearch = new HashSearch(count);
     private static Form form = new Form();
@@ -43,23 +44,21 @@ public class Main {
         }
     }
 
-    private static class ActionAnalisys implements ActionListener{
-        public void actionPerformed(ActionEvent e) {
-            int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
-            form.textFieldDiv.setText(Integer.toString(i[0]));
-            form.textFieldCurt.setText(Integer.toString(i[1]));
-            form.textFieldMidSq.setText(Integer.toString(i[2]));
-            form.textFieldMultipl.setText(Integer.toString(i[3]));
+    private static class changeCount implements ChangeListener {
+        public void stateChanged(ChangeEvent e) {
+            count = (int)form.spinnerCount.getValue();
+            hashSearch.newListKey(count);
+            hashSearch.cleanHashLists();
+            hashSearch.hashing();
         }
     }
 
-    private static class ActionAnalisys implements ActionListener{
-        public void actionPerformed(ActionEvent e) {
-            int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
-            form.textFieldDiv.setText(Integer.toString(i[0]));
-            form.textFieldCurt.setText(Integer.toString(i[1]));
-            form.textFieldMidSq.setText(Integer.toString(i[2]));
-            form.textFieldMultipl.setText(Integer.toString(i[3]));
+    private static class changeMax implements ChangeListener {
+        public void stateChanged(ChangeEvent e) {
+            hashSearch.setMaxNumber((int)form.spinnerMax.getValue());
+            hashSearch.newListKey(count);
+            hashSearch.cleanHashLists();
+            hashSearch.hashing();
         }
     }
 
@@ -83,6 +82,8 @@ public class Main {
 */
         form.buttonAnalisys.addActionListener(new ActionAnalisys());
         form.buttonSearch.addActionListener(new ActionSearch());
+        form.spinnerMax.addChangeListener(new changeMax());
+        form.spinnerCount.addChangeListener(new changeCount());
 
 
         /*Hash hash = new hashMethodCurtailing();
