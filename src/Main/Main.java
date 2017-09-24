@@ -1,20 +1,29 @@
 package Main;
 
-import HashSearch.Hash.Hash;
-import HashSearch.Hash.hashMethodDividing;
+import HashSearch.Hash.*;
 import HashSearch.HashSearch;
 
 public class Main {
     public static void main(String[] args) {
-        HashSearch hashSearch = new HashSearch(1000);
-
+        HashSearch hashSearch = new HashSearch(20000);
+        hashSearch.hashing();
+        /*
         int[] i = hashSearch.analisysEfficiency(100);
-        for (int j: i) {
-            System.out.println(j);
-        }
+        System.out.println("hashMethodDividing  " + Integer.toString(i[0]));
+        System.out.println("hashMethodCurtailing  " + Integer.toString(i[1]));
+        System.out.println("hashMethodMidSquares  " + Integer.toString(i[2]));
+        System.out.println("hashMethodMultipl  " + Integer.toString(i[3]));
+        */
 
+        System.out.println(hashSearch.searchOpenAddress(12567));
+        System.out.println(hashSearch.getTime());
 
-        Hash hash = new hashMethodDividing();
-        System.out.println(hash.getHash(23610, 100));
+        System.out.println(hashSearch.searchChain(12567));
+        System.out.println(hashSearch.getTime());
+
+        /*Hash hash = new hashMethodCurtailing();
+        for (int j = 123456; j < 1234567; j++) {
+            System.out.println(hash.getHash(j, 2000));
+        }*/
     }
 }

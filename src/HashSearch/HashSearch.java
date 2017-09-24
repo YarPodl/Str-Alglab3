@@ -5,6 +5,7 @@ import HashSearch.Hash.Hash;
 import HashSearch.Hash.hashMethodCurtailing;
 import HashSearch.Hash.hashMethodDividing;
 import HashSearch.Hash.hashMethodMidSquares;
+import HashSearch.Hash.hashMethodMultipl;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +18,6 @@ public class HashSearch {
     private int maxNumber = 65000;
     private long listKey[];
     private long time;
-
 
 
     private long hashListOpenAddress[];
@@ -48,6 +48,15 @@ public class HashSearch {
         this.maxNumber = maxNumber;
     }
 
+
+
+
+    public void hashing(){
+        infillOpenAddress(bestHashFunc);
+        infillChain(bestHashFunc);
+    }
+
+
     // формирует новый массив ключей
 
     public void newListKey(int count){
@@ -74,29 +83,24 @@ public class HashSearch {
     // Добавляет одно хэш значение в массив методом открытой адресации
 
     private void addMethodOpenAddress(long value, int index) {
-        if (listKey[index] != Long.MIN_VALUE){
-            int j = index + 1;
-            while (listKey[index] != Long.MIN_VALUE){
-                j++;
-                if (j == listKey.length) {j = 0;}
-            }
+        while (hashListOpenAddress[index] != Long.MIN_VALUE){
+            index++;
+            if (index == hashListOpenAddress.length) {index = 0;}
         }
-        listKey[index] = value;
+        hashListOpenAddress[index] = value;
     }
 
 
     // Добавляет одно хэш значение в массив методом цепочек
 
     private void addMethodChain(long value, int index) {
-        System.out.println(index);
-        System.out.println(value);
         hashListChain[index].add(value);
     }
 
 
     // Возвращает количество коллизий
 
-    public int getCountCollision(){
+    private int getCountCollision(){
         int count = 0;
         for (ArrayList i : hashListChain) {
             if (i.size() > 1){
@@ -134,11 +138,14 @@ public class HashSearch {
         int efficiency[] = new int[4];
         for (int i = 0; i < countForEfficiency; i++) {
 
+            newListKey(listKey.length);
             int countCollisions[] = new  int[4];
+
 
             cleanHashLists();
             infillChain(new hashMethodDividing());
             countCollisions[0] = getCountCollision();
+
 
             cleanHashLists();
             infillChain(new hashMethodCurtailing());
@@ -150,8 +157,9 @@ public class HashSearch {
             countCollisions[2] = getCountCollision();
 
 
+
             cleanHashLists();
-            infillChain(new hashMethodDividing());
+            infillChain(new hashMethodMultipl());
             countCollisions[3] = getCountCollision();
 
             int indexMinValue = 0;
@@ -170,26 +178,26 @@ public class HashSearch {
         time = System.nanoTime();
         int index = bestHashFunc.getHash(key, listKey.length);
         if (hashListOpenAddress[index] == Integer.MIN_VALUE){
-            time -= System.nanoTime();
+            time = System.nanoTime() - time;
             return false;
         }
         int barrier = index;
         while (index != hashListOpenAddress.length) {
-            index++;
             if (hashListOpenAddress[index] == key) {
-                time -= System.nanoTime();
+                time = System.nanoTime() - time;
                 return true;
             }
+            index++;
         }
         index = 0;
         while (index != barrier) {
-            index++;
             if (hashListOpenAddress[index] == key) {
-                time -= System.nanoTime();
+                time = System.nanoTime() - time;
                 return true;
             }
+            index++;
         }
-        time -= System.nanoTime();
+        time = System.nanoTime() - time;
         return false;
     }
 
@@ -197,10 +205,10 @@ public class HashSearch {
         time = System.nanoTime();
         int index = bestHashFunc.getHash(key, listKey.length);
         if(hashListChain[index].contains(key)){
-            time -= System.nanoTime();
+            time = System.nanoTime() - time;
             return true;
         }
-        time -= System.nanoTime();
+        time = System.nanoTime() - time;
         return false;
 
     }
