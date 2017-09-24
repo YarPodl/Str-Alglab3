@@ -7,7 +7,7 @@ public interface Hash {
     double multiplier = 0.6180339887;
     int divisor = 111;
 
-    int getHash(long value, int countAddress);
+    int getHash(int value, int countAddress);
 
 }
 /*

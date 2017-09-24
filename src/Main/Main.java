@@ -27,11 +27,11 @@ public class Main {
 
     private static class ActionSearch implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            boolean b = hashSearch.searchOpenAddress((long)(int)form.spinnerSearch.getValue());
+            boolean b = hashSearch.searchOpenAddress((int)form.spinnerSearch.getValue());
             form.textFieldOpAdr.setText(b ? "Найдено" : "Не найдено");
             form.textFieldOpAdrTime.setText(Long.toString(hashSearch.getTime()));
 
-            b = hashSearch.searchChain((long)(int)form.spinnerSearch.getValue());
+            b = hashSearch.searchChain((int)form.spinnerSearch.getValue());
             form.textFieldCh.setText(b ? "Найдено" : "Не найдено");
             form.textFieldChTime.setText(Long.toString(hashSearch.getTime()));
 

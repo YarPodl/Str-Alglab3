@@ -16,20 +16,20 @@ public class HashSearch {
 
     private Hash bestHashFunc = new hashMethodMidSquares();
     private int maxNumber = 65000;
-    private long listKey[];
+    private int[] listKey;
     private long time;
 
 
-    private long hashListOpenAddress[];
-    private ArrayList<Long>[] hashListChain;
+    private int hashListOpenAddress[];
+    private ArrayList<Integer>[] hashListChain;
 
 
 
 
     public HashSearch(int count){
         time = 0;
-        listKey = new long[count];
-        hashListOpenAddress = new long[count];
+        listKey = new int[count];
+        hashListOpenAddress = new int[count];
         hashListChain = new ArrayList[count];
         cleanHashLists();
         newListKey(count);
@@ -60,6 +60,7 @@ public class HashSearch {
     // формирует новый массив ключей
 
     public void newListKey(int count){
+        listKey = new int[count];
         Random random = new Random();
         for (int i = 0; i < count; i++) {
             listKey[i] = random.nextInt(maxNumber);
@@ -69,8 +70,11 @@ public class HashSearch {
     // Очищает хэш массивы
 
     public void cleanHashLists(){
+        hashListOpenAddress = new int[listKey.length];
+        hashListChain = new ArrayList[listKey.length];
+
         for (int i = 0; i < hashListOpenAddress.length; i++) {
-            hashListOpenAddress[i] = Long.MIN_VALUE;
+            hashListOpenAddress[i] = Integer.MIN_VALUE;
         }
         for (int i = 0; i < hashListChain.length; i++) {
             hashListChain[i] = new ArrayList<>();
@@ -82,8 +86,8 @@ public class HashSearch {
 
     // Добавляет одно хэш значение в массив методом открытой адресации
 
-    private void addMethodOpenAddress(long value, int index) {
-        while (hashListOpenAddress[index] != Long.MIN_VALUE){
+    private void addMethodOpenAddress(int value, int index) {
+        while (hashListOpenAddress[index] != Integer.MIN_VALUE){
             index++;
             if (index == hashListOpenAddress.length) {index = 0;}
         }
@@ -93,7 +97,7 @@ public class HashSearch {
 
     // Добавляет одно хэш значение в массив методом цепочек
 
-    private void addMethodChain(long value, int index) {
+    private void addMethodChain(int value, int index) {
         hashListChain[index].add(value);
     }
 
@@ -113,7 +117,7 @@ public class HashSearch {
     // Заполняет хэш значениями массив методом цепочек
 
     private void infillChain(Hash hash){
-        for (long i : listKey) {
+        for (int i : listKey) {
             addMethodChain(i, hash.getHash(i, listKey.length));
         }
     }
@@ -124,7 +128,7 @@ public class HashSearch {
 
     private void infillOpenAddress(Hash hash){
 
-        for (long i : listKey) {
+        for (int i : listKey) {
             addMethodOpenAddress(i, hash.getHash(i, listKey.length));
 
         }
@@ -195,7 +199,7 @@ public class HashSearch {
         return efficiency;
     }
 
-    public boolean searchOpenAddress(long key){
+    public boolean searchOpenAddress(int key){
         time = System.nanoTime();
         int index = bestHashFunc.getHash(key, listKey.length);
         if (hashListOpenAddress[index] == Integer.MIN_VALUE){
@@ -222,7 +226,7 @@ public class HashSearch {
         return false;
     }
 
-    public boolean searchChain(long key){
+    public boolean searchChain(int key){
         time = System.nanoTime();
         int index = bestHashFunc.getHash(key, listKey.length);
         if(hashListChain[index].contains(key)){

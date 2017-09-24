@@ -1,9 +1,9 @@
 package HashSearch.Hash;
 
 public class hashMethodMidSquares implements Hash{
-    public int getHash(long value, int countAddress) {
+    public int getHash(int value, int countAddress) {
         int lengthAddress = Integer.toString(countAddress).length(); // порядок числа адресов
-        long valueSqr = value*value;
+        long valueSqr = (long)value*value;
         int lengthValueSqr = Long.toString(valueSqr).length();
         while (lengthValueSqr > lengthAddress) {
             if ((lengthValueSqr - lengthAddress) % 2 == 0){
