@@ -21,6 +21,9 @@ public class Main {
         System.out.println(hashSearch.searchChain(12567));
         System.out.println(hashSearch.getTime());
 
+        Form form = new Form();
+
+
         /*Hash hash = new hashMethodCurtailing();
         for (int j = 123456; j < 1234567; j++) {
             System.out.println(hash.getHash(j, 2000));
