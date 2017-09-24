@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Main {
 
 
-    private static final int count = 1000;
+    private static final int count = 100000;
 
     private static HashSearch hashSearch = new HashSearch(count);
     private static Form form = new Form();
@@ -26,8 +26,13 @@ public class Main {
 
     private static class ActionSearch implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            boolean b = hashSearch.searchOpenAddress((long)form.spinnerSearch.getValue());
+            boolean b = hashSearch.searchOpenAddress((long)(int)form.spinnerSearch.getValue());
             form.textFieldOpAdr.setText(b ? "Найдено" : "Не найдено");
+            form.textFieldOpAdrTime.setText(Long.toString(hashSearch.getTime()));
+
+            b = hashSearch.searchChain((long)(int)form.spinnerSearch.getValue());
+            form.textFieldCh.setText(b ? "Найдено" : "Не найдено");
+            form.textFieldChTime.setText(Long.toString(hashSearch.getTime()));
 
 
 /*
@@ -38,10 +43,30 @@ public class Main {
         }
     }
 
+    private static class ActionAnalisys implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
+            form.textFieldDiv.setText(Integer.toString(i[0]));
+            form.textFieldCurt.setText(Integer.toString(i[1]));
+            form.textFieldMidSq.setText(Integer.toString(i[2]));
+            form.textFieldMultipl.setText(Integer.toString(i[3]));
+        }
+    }
+
+    private static class ActionAnalisys implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
+            form.textFieldDiv.setText(Integer.toString(i[0]));
+            form.textFieldCurt.setText(Integer.toString(i[1]));
+            form.textFieldMidSq.setText(Integer.toString(i[2]));
+            form.textFieldMultipl.setText(Integer.toString(i[3]));
+        }
+    }
+
     public static void main(String[] args) {
 
         hashSearch.hashing();
-
+/*
         int[] i = hashSearch.analisysEfficiency(100);
         System.out.println("hashMethodDividing  " + Integer.toString(i[0]));
         System.out.println("hashMethodCurtailing  " + Integer.toString(i[1]));
@@ -55,8 +80,9 @@ public class Main {
         System.out.println(hashSearch.searchChain(12567));
         System.out.println(hashSearch.getTime());
 
-
+*/
         form.buttonAnalisys.addActionListener(new ActionAnalisys());
+        form.buttonSearch.addActionListener(new ActionSearch());
 
 
         /*Hash hash = new hashMethodCurtailing();
