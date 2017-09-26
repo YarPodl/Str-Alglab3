@@ -11,6 +11,8 @@ public class Main {
 
 
     private static int count = 1000;
+    private static int countSearch = 10000;
+    private static int maxNumberForSearch = 20000;
 
     private static HashSearch hashSearch = new HashSearch(count);
     private static Form form = new Form();
@@ -26,7 +28,7 @@ public class Main {
     }
 
     private static class ActionSearch implements ActionListener{
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {/*
             boolean b = hashSearch.searchOpenAddress((int)form.spinnerSearch.getValue());
             form.textFieldOpAdr.setText(b ? "Найдено" : "Не найдено");
             form.textFieldOpAdrTime.setText(Long.toString(hashSearch.getTime()));
@@ -34,7 +36,11 @@ public class Main {
             b = hashSearch.searchChain((int)form.spinnerSearch.getValue());
             form.textFieldCh.setText(b ? "Найдено" : "Не найдено");
             form.textFieldChTime.setText(Long.toString(hashSearch.getTime()));
+*/
+            int sumTime = 0, sumCompare = 0;
+            for (int i = 0; i < countSearch; i++){
 
+            }
 
 /*
             form.textFieldDiv.setText(Integer.toString(i[0]));

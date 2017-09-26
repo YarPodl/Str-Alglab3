@@ -18,6 +18,7 @@ public class HashSearch {
     private int maxNumber = 65000;
     private int[] listKey;
     private long time;
+    private int countCompare;
 
 
     private int hashListOpenAddress[];
@@ -40,9 +41,6 @@ public class HashSearch {
         return time;
     }
 
-    public int getMaxNumber() {
-        return maxNumber;
-    }
 
     public void setMaxNumber(int maxNumber) {
         this.maxNumber = maxNumber;
@@ -201,26 +199,27 @@ public class HashSearch {
 
     public boolean searchOpenAddress(int key){
         time = System.nanoTime();
+        countCompare = 0;
         int index = bestHashFunc.getHash(key, listKey.length);
-        if (hashListOpenAddress[index] == Integer.MIN_VALUE){
-            time = System.nanoTime() - time;
-            return false;
-        }
-        int barrier = index;
-        while (index != hashListOpenAddress.length) {
-            if (hashListOpenAddress[index] == key) {
-                time = System.nanoTime() - time;
-                return true;
+        if (hashListOpenAddress[index] != Integer.MIN_VALUE) {
+            int barrier = index;
+            while (index != hashListOpenAddress.length) {
+                countCompare++;
+                if (hashListOpenAddress[index] == key) {
+                    time = System.nanoTime() - time;
+                    return true;
+                }
+                index++;
             }
-            index++;
-        }
-        index = 0;
-        while (index != barrier) {
-            if (hashListOpenAddress[index] == key) {
-                time = System.nanoTime() - time;
-                return true;
+            index = 0;
+            while (index != barrier) {
+                countCompare++;
+                if (hashListOpenAddress[index] == key) {
+                    time = System.nanoTime() - time;
+                    return true;
+                }
+                index++;
             }
-            index++;
         }
         time = System.nanoTime() - time;
         return false;
@@ -228,10 +227,14 @@ public class HashSearch {
 
     public boolean searchChain(int key){
         time = System.nanoTime();
+        countCompare = 0;
         int index = bestHashFunc.getHash(key, listKey.length);
-        if(hashListChain[index].contains(key)){
-            time = System.nanoTime() - time;
-            return true;
+        for (int i: hashListChain[index]) {
+            countCompare++;
+            if (i == key){
+                time = System.nanoTime() - time;
+                return true;
+            }
         }
         time = System.nanoTime() - time;
         return false;

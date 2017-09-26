@@ -24,7 +24,7 @@ public class Form extends JFrame {
     public Form() {
         setTitle("Лабораторная работа №3. Хешированный поиск");
         setContentPane(mainPanel);
-        setMinimumSize(new Dimension(600, 430));
+        setMinimumSize(new Dimension(700, 430));
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         spinnerCmr.setModel(new SpinnerNumberModel(100, 1, 10000, 1));
@@ -190,7 +190,7 @@ public class Form extends JFrame {
         final JLabel label10 = new JLabel();
         Font label10Font = this.$$$getFont$$$(null, -1, 14, label10.getFont());
         if (label10Font != null) label10.setFont(label10Font);
-        label10.setText("Метод открытой адресации");
+        label10.setText("Открытой адресации");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -199,7 +199,7 @@ public class Form extends JFrame {
         final JLabel label11 = new JLabel();
         Font label11Font = this.$$$getFont$$$(null, -1, 14, label11.getFont());
         if (label11Font != null) label11.setFont(label11Font);
-        label11.setText("Результат");
+        label11.setText("Количество найденных");
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 0;
@@ -208,16 +208,16 @@ public class Form extends JFrame {
         final JLabel label12 = new JLabel();
         Font label12Font = this.$$$getFont$$$(null, -1, 14, label12.getFont());
         if (label12Font != null) label12.setFont(label12Font);
-        label12.setText("Время, нс");
+        label12.setText("Время, мкс");
         gbc = new GridBagConstraints();
-        gbc.gridx = 5;
+        gbc.gridx = 4;
         gbc.gridy = 0;
         gbc.anchor = GridBagConstraints.WEST;
         panel8.add(label12, gbc);
         final JLabel label13 = new JLabel();
         Font label13Font = this.$$$getFont$$$(null, -1, 14, label13.getFont());
         if (label13Font != null) label13.setFont(label13Font);
-        label13.setText("Метод цепочек");
+        label13.setText("Цепочек");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 4;
@@ -226,7 +226,7 @@ public class Form extends JFrame {
         textFieldOpAdrTime = new JTextField();
         textFieldOpAdrTime.setEditable(false);
         gbc = new GridBagConstraints();
-        gbc.gridx = 5;
+        gbc.gridx = 4;
         gbc.gridy = 2;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -234,7 +234,7 @@ public class Form extends JFrame {
         textFieldChTime = new JTextField();
         textFieldChTime.setEditable(false);
         gbc = new GridBagConstraints();
-        gbc.gridx = 5;
+        gbc.gridx = 4;
         gbc.gridy = 4;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -244,7 +244,6 @@ public class Form extends JFrame {
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 2;
-        gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel8.add(textFieldOpAdr, gbc);
@@ -253,7 +252,6 @@ public class Form extends JFrame {
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 4;
-        gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel8.add(textFieldCh, gbc);
@@ -283,10 +281,19 @@ public class Form extends JFrame {
         panel8.add(spacer15, gbc);
         final JPanel spacer16 = new JPanel();
         gbc = new GridBagConstraints();
-        gbc.gridx = 4;
+        gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panel8.add(spacer16, gbc);
+        final JLabel label14 = new JLabel();
+        Font label14Font = this.$$$getFont$$$(null, -1, 14, label14.getFont());
+        if (label14Font != null) label14.setFont(label14Font);
+        label14.setText("Среднее число сравнений");
+        gbc = new GridBagConstraints();
+        gbc.gridx = 6;
+        gbc.gridy = 0;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel8.add(label14, gbc);
         final com.intellij.uiDesigner.core.Spacer spacer17 = new com.intellij.uiDesigner.core.Spacer();
         mainPanel.add(spacer17, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, 1, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer18 = new com.intellij.uiDesigner.core.Spacer();
@@ -296,16 +303,16 @@ public class Form extends JFrame {
         final JPanel panel9 = new JPanel();
         panel9.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 5, new Insets(0, 0, 0, 0), -1, -1));
         mainPanel.add(panel9, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        final JLabel label14 = new JLabel();
-        label14.setText("Количество чисел");
-        panel9.add(label14, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label15 = new JLabel();
+        label15.setText("Количество чисел");
+        panel9.add(label15, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final com.intellij.uiDesigner.core.Spacer spacer20 = new com.intellij.uiDesigner.core.Spacer();
         panel9.add(spacer20, new com.intellij.uiDesigner.core.GridConstraints(0, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         spinnerCount = new JSpinner();
         panel9.add(spinnerCount, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final JLabel label15 = new JLabel();
-        label15.setText("Максимальное число");
-        panel9.add(label15, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label16 = new JLabel();
+        label16.setText("Максимальное число");
+        panel9.add(label16, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         spinnerMax = new JSpinner();
         panel9.add(spinnerMax, new com.intellij.uiDesigner.core.GridConstraints(0, 4, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
