@@ -37,6 +37,11 @@ public class HashSearch {
     }
 
 
+    public int getCountCompare() {
+        return countCompare;
+    }
+
+
     public long getTime() {
         return time;
     }
@@ -227,14 +232,15 @@ public class HashSearch {
 
     public boolean searchChain(int key){
         time = System.nanoTime();
-        countCompare = 0;
+        countCompare = 1;
         int index = bestHashFunc.getHash(key, listKey.length);
         for (int i: hashListChain[index]) {
-            countCompare++;
+
             if (i == key){
                 time = System.nanoTime() - time;
                 return true;
             }
+            countCompare++;
         }
         time = System.nanoTime() - time;
         return false;

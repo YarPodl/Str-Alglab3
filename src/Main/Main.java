@@ -6,6 +6,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Main {
 
@@ -37,10 +38,29 @@ public class Main {
             form.textFieldCh.setText(b ? "Найдено" : "Не найдено");
             form.textFieldChTime.setText(Long.toString(hashSearch.getTime()));
 */
-            int sumTime = 0, sumCompare = 0;
+            int sumTimeOpenAddress = 0, sumCompareOpenAddress = 0, key;
+            int sumTimeChain = 0, sumCompareChain = 0;
+            int countOpenAddress = 0, countChain = 0;
+            Random random = new Random();
             for (int i = 0; i < countSearch; i++){
-
+                key = random.nextInt(maxNumberForSearch);
+                if(hashSearch.searchOpenAddress(key)){
+                    countOpenAddress++;
+                }
+                sumCompareOpenAddress += hashSearch.getCountCompare();
+                sumTimeOpenAddress += hashSearch.getTime();
+                if(hashSearch.searchChain(key)){
+                    countChain++;
+                }
+                sumCompareChain += hashSearch.getCountCompare();
+                sumTimeChain += hashSearch.getTime();
             }
+            form.textFieldOpAdrTime.setText(Integer.toString(sumTimeOpenAddress/countSearch));
+            form.textFieldChTime.setText(Integer.toString(sumTimeChain/countSearch));
+            form.textFieldCmpOpAdr.setText(Double.toString((double)sumCompareOpenAddress/countSearch));
+            form.textFieldCmpCh.setText(Double.toString((double)sumCompareChain/countSearch));
+            form.textFieldOpAdr.setText(Integer.toString(countOpenAddress));
+            form.textFieldCh.setText(Integer.toString(countChain));
 
 /*
             form.textFieldDiv.setText(Integer.toString(i[0]));
