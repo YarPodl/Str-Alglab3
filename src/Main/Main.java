@@ -29,15 +29,8 @@ public class Main {
     }
 
     private static class ActionSearch implements ActionListener{
-        public void actionPerformed(ActionEvent e) {/*
-            boolean b = hashSearch.searchOpenAddress((int)form.spinnerSearch.getValue());
-            form.textFieldOpAdr.setText(b ? "Найдено" : "Не найдено");
-            form.textFieldOpAdrTime.setText(Long.toString(hashSearch.getTime()));
+        public void actionPerformed(ActionEvent e) {
 
-            b = hashSearch.searchChain((int)form.spinnerSearch.getValue());
-            form.textFieldCh.setText(b ? "Найдено" : "Не найдено");
-            form.textFieldChTime.setText(Long.toString(hashSearch.getTime()));
-*/
             int sumTimeOpenAddress = 0, sumCompareOpenAddress = 0, key;
             int sumTimeChain = 0, sumCompareChain = 0;
             int countOpenAddress = 0, countChain = 0;
@@ -62,11 +55,6 @@ public class Main {
             form.textFieldOpAdr.setText(Integer.toString(countOpenAddress));
             form.textFieldCh.setText(Integer.toString(countChain));
 
-/*
-            form.textFieldDiv.setText(Integer.toString(i[0]));
-            form.textFieldCurt.setText(Integer.toString(i[1]));
-            form.textFieldMidSq.setText(Integer.toString(i[2]));
-            form.textFieldMultipl.setText(Integer.toString(i[3]));*/
         }
     }
 
@@ -91,30 +79,11 @@ public class Main {
     public static void main(String[] args) {
 
         hashSearch.hashing();
-/*
-        int[] i = hashSearch.analisysEfficiency(100);
-        System.out.println("hashMethodDividing  " + Integer.toString(i[0]));
-        System.out.println("hashMethodCurtailing  " + Integer.toString(i[1]));
-        System.out.println("hashMethodMidSquares  " + Integer.toString(i[2]));
-        System.out.println("hashMethodMultipl  " + Integer.toString(i[3]));
 
-
-        System.out.println(hashSearch.searchOpenAddress(12567));
-        System.out.println(hashSearch.getTime());
-
-        System.out.println(hashSearch.searchChain(12567));
-        System.out.println(hashSearch.getTime());
-
-*/
         form.buttonAnalisys.addActionListener(new ActionAnalisys());
         form.buttonSearch.addActionListener(new ActionSearch());
         form.spinnerMax.addChangeListener(new changeMax());
         form.spinnerCount.addChangeListener(new changeCount());
 
-
-        /*Hash hash = new hashMethodCurtailing();
-        for (int j = 123456; j < 1234567; j++) {
-            System.out.println(hash.getHash(j, 2000));
-        }*/
     }
 }

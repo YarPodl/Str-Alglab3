@@ -202,7 +202,7 @@ public class Form extends JFrame {
         final JLabel label11 = new JLabel();
         Font label11Font = this.$$$getFont$$$(null, -1, 14, label11.getFont());
         if (label11Font != null) label11.setFont(label11Font);
-        label11.setText("Время, мкс");
+        label11.setText("Время   ");
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
         gbc.gridy = 0;

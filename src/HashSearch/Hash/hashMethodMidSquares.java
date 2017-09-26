@@ -16,6 +16,6 @@ public class hashMethodMidSquares implements Hash{
                 lengthValueSqr -= 1;
             }
         }
-        return (int) (valueSqr * ((double)countAddress /  Math.pow(10, lengthAddress)));
+        return (int) (valueSqr * ((double)countAddress /  Math.pow(10, lengthAddress))); // приводим хеш к количеству адресов
     }
 }

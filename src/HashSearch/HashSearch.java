@@ -14,7 +14,7 @@ import java.util.Random;
 public class HashSearch {
 
 
-    private Hash bestHashFunc = new hashMethodMidSquares();
+    private Hash bestHashFunc = new hashMethodMultipl();
     private int maxNumber = 65000;
     private int[] listKey;
     private long time;
@@ -132,7 +132,7 @@ public class HashSearch {
     private void infillOpenAddress(Hash hash){
 
         for (int i : listKey) {
-            addMethodOpenAddress(i, hash.getHash(i, listKey.length));
+            addMethodOpenAddress(i, hash.getHash(i, hashListOpenAddress.length));
 
         }
     }
@@ -178,6 +178,7 @@ public class HashSearch {
 
             efficiency[indexMinValue]++;
         }
+        cleanHashLists();
         int indexMax = 0;
         for (int j = 1; j < efficiency.length; j++) {
             if (efficiency[j] > efficiency[indexMax]){
@@ -205,7 +206,7 @@ public class HashSearch {
     public boolean searchOpenAddress(int key){
         time = System.nanoTime();
         countCompare = 0;
-        int index = bestHashFunc.getHash(key, listKey.length);
+        int index = bestHashFunc.getHash(key, hashListOpenAddress.length);
         if (hashListOpenAddress[index] != Integer.MIN_VALUE) {
             int barrier = index;
             while (index != hashListOpenAddress.length) {
