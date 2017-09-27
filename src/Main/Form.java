@@ -30,7 +30,7 @@ public class Form extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         spinnerCmr.setModel(new SpinnerNumberModel(100, 1, 10000, 1));
-        spinnerCount.setModel(new SpinnerNumberModel(1000, 0, 1000000, 1));
+        spinnerCount.setModel(new SpinnerNumberModel(1000, 0, 10000000, 1));
         spinnerMax.setModel(new SpinnerNumberModel(65000, 0, Integer.MAX_VALUE, 1));
     }
 

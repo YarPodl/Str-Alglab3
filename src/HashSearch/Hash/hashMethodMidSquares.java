@@ -2,7 +2,7 @@ package HashSearch.Hash;
 
 public class hashMethodMidSquares implements Hash{
     public int getHash(int value, int countAddress) {
-        int lengthAddress = Integer.toString(countAddress).length(); // порядок числа адресов
+        int lengthAddress = Integer.toString(countAddress-1).length(); // порядок числа адресов
         long valueSqr = (long)value*value;
         int lengthValueSqr = Long.toString(valueSqr).length();
         while (lengthValueSqr > lengthAddress) {
