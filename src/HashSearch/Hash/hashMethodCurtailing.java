@@ -2,7 +2,7 @@ package HashSearch.Hash;
 
 public class hashMethodCurtailing implements Hash{
     public int getHash(int value, int countAddress) {
-        int lengthAddress = Integer.toString(countAddress - 1).length(); // порядок числа адресов
+        int lengthAddress = (int) Math.log10(countAddress - 1) + 1; // порядок числа адресов
         int result = 0;
         while (value != 0){
             result += value % Math.pow(10, lengthAddress);   // Добаляем часть числа в хеш

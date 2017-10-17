@@ -19,8 +19,6 @@ public class HashSearch {
     private int[] listKey;
     private long time;
     private int countCompare;
-
-
     private int hashListOpenAddress[];
     private ArrayList<Integer>[] hashListChain;
 
@@ -87,24 +85,6 @@ public class HashSearch {
 
 
 
-    // Добавляет одно хэш значение в массив методом открытой адресации
-
-    private void addMethodOpenAddress(int value, int index) {
-        while (hashListOpenAddress[index] != Integer.MIN_VALUE){
-            index++;
-            if (index == hashListOpenAddress.length) {index = 0;}
-        }
-        hashListOpenAddress[index] = value;
-    }
-
-
-    // Добавляет одно хэш значение в массив методом цепочек
-
-    private void addMethodChain(int value, int index) {
-        hashListChain[index].add(value);
-    }
-
-
     // Возвращает количество коллизий
 
     private int getCountCollision(){
@@ -121,7 +101,10 @@ public class HashSearch {
 
     private void infillChain(Hash hash){
         for (int i : listKey) {
-            addMethodChain(i, hash.getHash(i, listKey.length));
+            if (hash.getHash(i, listKey.length)>1000){
+                System.out.println();
+            }
+            hashListChain[hash.getHash(i, listKey.length)].add(i);
         }
     }
 
@@ -132,8 +115,13 @@ public class HashSearch {
     private void infillOpenAddress(Hash hash){
 
         for (int i : listKey) {
-            addMethodOpenAddress(i, hash.getHash(i, hashListOpenAddress.length));
 
+            int index = hash.getHash(i, hashListOpenAddress.length);
+            while (hashListOpenAddress[index] != Integer.MIN_VALUE){
+                index++;
+                if (index == hashListOpenAddress.length) {index = 0;}
+            }
+            hashListOpenAddress[index] = i;
         }
     }
 
@@ -208,7 +196,7 @@ public class HashSearch {
         countCompare = 0;
         int index = bestHashFunc.getHash(key, hashListOpenAddress.length);
         if (hashListOpenAddress[index] != Integer.MIN_VALUE) {
-            int barrier = index;
+            /*int barrier = index;
             while (index != hashListOpenAddress.length) {
                 countCompare++;
                 if (hashListOpenAddress[index] == key) {
@@ -226,6 +214,26 @@ public class HashSearch {
                 }
                 index++;
             }
+			*/
+			//////
+			int barrier = hashListOpenAddress.length;
+			while (hashListOpenAddress[index] != key) {
+                countCompare++;
+                index++;
+                if (index == barrier) {
+                    if(index == hashListOpenAddress.length){
+                        barrier = hashListOpenAddress.length - countCompare; // Начальный индекс
+						index = 0;
+					}
+                    if (index == barrier) {
+                        time = System.nanoTime() - time;
+                        return false;
+                    }
+                }
+            }
+			time = System.nanoTime() - time;
+            return true;
+			//////
         }
         time = System.nanoTime() - time;
         return false;

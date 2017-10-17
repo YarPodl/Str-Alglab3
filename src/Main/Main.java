@@ -20,6 +20,7 @@ public class Main {
 
     private static class ActionAnalisys implements ActionListener{
         public void actionPerformed(ActionEvent e) {
+            hashSearch.newListKey(count);
             int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
             form.textFieldDiv.setText(Integer.toString(i[0]));
             form.textFieldCurt.setText(Integer.toString(i[1]));
