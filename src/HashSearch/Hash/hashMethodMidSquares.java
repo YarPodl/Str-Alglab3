@@ -23,11 +23,8 @@ public class hashMethodMidSquares implements Hash{
         int lengthAddress = (int) Math.log10(countAddress - 1) + 1;
         int lengthValueSqr = (int) Math.log10(valueSqr) + 1;
         int i = (lengthValueSqr - lengthAddress)/2;
-        if(i % 2 == 1)
-        if (i > 0){
-            valueSqr %= Math.pow(10, lengthValueSqr - i);
-            valueSqr /= Math.pow(10, i);
-        }
+        valueSqr %= Math.pow(10, lengthValueSqr - i);
+        valueSqr /= Math.pow(10, (lengthValueSqr % 2 == 1)? i : i + 1);
         return (int) (valueSqr * ((double)countAddress /  Math.pow(10, lengthAddress))); // приводим хеш к количеству адресов
     }
 }

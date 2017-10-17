@@ -101,9 +101,6 @@ public class HashSearch {
 
     private void infillChain(Hash hash){
         for (int i : listKey) {
-            if (hash.getHash(i, listKey.length)>1000){
-                System.out.println();
-            }
             hashListChain[hash.getHash(i, listKey.length)].add(i);
         }
     }

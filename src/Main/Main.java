@@ -1,5 +1,7 @@
 package Main;
 
+import HashSearch.Hash.hashMethodDividing;
+import HashSearch.Hash.Hash;
 import HashSearch.HashSearch;
 
 import javax.swing.event.ChangeEvent;
@@ -8,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Main {
+public class Main {K
 
 
     private static int count = 1000;
@@ -20,6 +22,17 @@ public class Main {
 
     private static class ActionAnalisys implements ActionListener{
         public void actionPerformed(ActionEvent e) {
+
+
+            hashMethodDividing.setDivisor(1001);
+            hashSearch.setMaxNumber(65000);
+            hashSearch.newListKey(1000);
+            hashSearch.cleanHashLists();
+            hashSearch.hashing();
+
+
+
+
             hashSearch.newListKey(count);
             int[] i = hashSearch.analisysEfficiency((int)form.spinnerCmr.getValue());
             form.textFieldDiv.setText(Integer.toString(i[0]));
@@ -31,6 +44,14 @@ public class Main {
 
     private static class ActionSearch implements ActionListener{
         public void actionPerformed(ActionEvent e) {
+
+            hashMethodDividing.setDivisor(10007);
+            hashSearch.setMaxNumber(10000);
+            hashSearch.newListKey(10000);
+            hashSearch.cleanHashLists();
+            hashSearch.hashing();
+
+
 
             int sumTimeOpenAddress = 0, sumCompareOpenAddress = 0, key;
             int sumTimeChain = 0, sumCompareChain = 0;
